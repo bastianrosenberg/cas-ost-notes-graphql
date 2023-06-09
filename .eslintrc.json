@@ -1,0 +1,26 @@
+{
+  "env": {
+    "node": true,
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["airbnb-base", "prettier"],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": "off",
+    "no-plusplus": "off",
+    "import/extensions": "off",
+    "object-curly-newline": "off",
+    "object-curly-spacing": "off",
+    "linebreak-style": "off",
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }]
+  },
+  "globals": {
+    "moment": false,
+    "socket": false
+  }
+}

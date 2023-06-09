@@ -1,0 +1,45 @@
+{
+  "name": "cas_note_app_graphql",
+  "version": "1.0.0",
+  "description": "Note app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "nodemon index.js",
+    "server": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stylelint": "stylelint \"**/*.css\"",
+    "w3c": "html-validator --file ./public/index.html  --verbose",
+    "eslint": "eslint \"**/*.js\"",
+    "all": "npm run stylelint && npm run w3c  && npm run eslint  && node -e \"console.log('npm run all completed')\""
+  },
+  "author": "Bastian Rosenberg",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.21.8",
+    "concurrently": "^8.1.0",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "html-validator-cli": "^7.0.1",
+    "nodemon": "^2.0.22",
+    "prettier": "2.6.2",
+    "stylelint": "^14.7.1",
+    "stylelint-config-standard": "^25.0.0"
+  },
+  "dependencies": {
+    "apollo-server": "^3.12.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.0",
+    "graphql": "^16.6.0",
+    "http-errors": "^2.0.0",
+    "moment": "^2.29.4",
+    "mongoose": "^7.1.0",
+    "path": "0.12.7",
+    "pug": "^3.0.2",
+    "socket.io": "^4.6.1"
+  }
+}

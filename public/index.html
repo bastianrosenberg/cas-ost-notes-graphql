@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Note app</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="../js/controllers/app-controller.js" type="module"></script>
+    <script src="../js/controllers/notes-controller.js" type="module"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="../favicon.png" type="image/png" />
+    <link href="../styles/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <div class="page-intro">
+        <h1>Note app</h1>
+        <p>A note app for cas fee using GraphQL</p>
+      </div>
+      <div class="app-btns header-buttons">
+        <button
+          class="btn header-buttons__create"
+          type="button"
+          id="button-create"
+        >
+          Create Note
+        </button>
+        <button class="btn header-buttons__theme" type="button">
+          Dark Theme
+        </button>
+      </div>
+    </header>
+    <main>
+      <div class="filter-container">
+        <input
+          placeholder="Search by title"
+          id="search"
+          type="text"
+          name="search"
+        />
+        <button class="btn sort space" name="DueDate" data-field="dueDate">
+          DueDate
+        </button>
+        <button
+          class="btn sort space"
+          name="Importance"
+          data-field="importance"
+        >
+          Importance
+        </button>
+
+        <div class="switch-item">
+          <label>Completed</label>
+          <label class="switch">
+            <input id="filter-completed" type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+      <div id="notes-container"></div>
+
+      <dialog id="note-dialog">
+        <div class="form-center">
+          <h1>Create Note</h1>
+        </div>
+        <div class="note-detail">
+          <form>
+            <div class="note-form">
+              <input id="note-id" type="hidden" />
+              <label for="title">Title</label>
+              <input
+                id="title"
+                class="form-input"
+                type="text"
+                required
+                name="Title"
+              />
+
+              <label for="description">Text</label>
+              <textarea
+                id="description"
+                class="form-input"
+                required
+                name="Description"
+                rows="4"
+              ></textarea>
+
+              <label for="description">DueDate</label>
+              <input
+                id="duedate"
+                type="date"
+                class="form-input"
+                required
+                name="DueDate"
+              />
+
+              <label></label>
+              <div class="slidecontainer">
+                <input type="range" min="1" max="5" value="3" id="importance" />
+              </div>
+            </div>
+            <div class="form-center">
+              <button
+                value="cancel"
+                class="btn space"
+                formmethod="dialog"
+                formnovalidate
+              >
+                Cancel
+              </button>
+              <button
+                class="btn space"
+                id="submit-button"
+                value="default"
+                formmethod="dialog"
+              >
+                Create
+              </button>
+            </div>
+          </form>
+        </div>
+      </dialog>
+    </main>
+    <footer><div>Note app Bastian Rosenberg &#169;2023</div></footer>
+  </body>
+</html>
