@@ -83,7 +83,7 @@ const handleEdit = async (noteId) => {
     title.textContent = CONSTANTS.UPDATE_NOTE;
     formImportance.valueAsNumber = note.importance;
   } else {
-    document.getElementById("star3").checked = true;
+    document.getElementsByName("star3").checked = true;
     formDueDate.value = moment().format(CONSTANTS.DATE_FORMAT);
     formCompleted.checked = false;
   }

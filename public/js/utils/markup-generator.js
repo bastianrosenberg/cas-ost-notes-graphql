@@ -51,10 +51,12 @@ export default class MarkupGenerator {
         (m) =>
           `<input disabled ${
             note.importance === m && "checked"
-          } type="radio" id="star${m}" name="importance${
+          } name="star${m}" type="radio" id="star${m}_${
             note._id
           }" value="${m}"/>
-      <label for="star${m}" title="${m} star${m > 1 ? "s" : ""}"></label>`
+      <label for="star${m}_${note._id}" title="${m} star${
+            m > 1 ? "s" : ""
+          }"></label>`
       )
       .join("");
   }
