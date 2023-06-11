@@ -51,9 +51,7 @@ export default class MarkupGenerator {
         (m) =>
           `<input disabled ${
             note.importance === m && "checked"
-          } name="star${m}" type="radio" id="star${m}_${
-            note._id
-          }" value="${m}"/>
+          } type="radio" id="star${m}_${note._id}" value="${m}"/>
       <label for="star${m}_${note._id}" title="${m} star${
             m > 1 ? "s" : ""
           }"></label>`

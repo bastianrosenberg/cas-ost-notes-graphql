@@ -1,6 +1,7 @@
 # Notes App
 
 This is a project for the CAS Frontend Engineer OST 2023/2024 using GraphQL
+It's a clone from the REST version replacing REST with GraphQL: [cas note app](https://github.com/bastianrosenberg/cas-ost-notes.git)
 
 # Technologies
 
