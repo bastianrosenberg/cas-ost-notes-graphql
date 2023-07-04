@@ -45,8 +45,11 @@ const server = app.listen(port, () => {
 const io = new Server(server);
 
 io.on("connection", (socket) => {
-  socket.on("message", (payload) => {
-    io.emit("message", payload);
+  socket.on("delete", (payload) => {
+    io.emit("delete", payload);
+  });
+  socket.on("modify", (payload) => {
+    io.emit("modify", payload);
   });
   socket.on("theme", (payload) => {
     io.emit("theme", payload);
