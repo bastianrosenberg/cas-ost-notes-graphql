@@ -40,12 +40,11 @@ async function renderNotes() {
   );
 }
 
-const deleteNote = async (clickedElem) => {
+const deleteNote = (clickedElem) => {
   const noteId = getNoteIdFromContainer(clickedElem);
 
-  await noteService.removeNote(noteId).then(() => {
+  noteService.removeNote(noteId).then(() => {
     clickedElem.closest(".note").remove();
-    socket.emit("message", noteId);
   });
 };
 
@@ -57,7 +56,6 @@ async function toggleFinishState(element) {
     ...note,
     completed: element.textContent === CONSTANTS.COMPLETE,
   });
-  socket.emit("message", note._id);
 }
 
 // form inputs
@@ -124,7 +122,7 @@ async function handleManipulateNoteEvent(event) {
           document.body
         ).getPropertyValue("--warn-color");
       } else {
-        await deleteNote(clickedElement);
+        deleteNote(clickedElement);
       }
       break;
     case "edit-button":
@@ -146,7 +144,6 @@ async function handleFormSubmitEvent() {
     await saveNote();
   }
   await renderNotes();
-  socket.emit("message", noteIdInput.value);
   noteDialog.close();
 }
 
@@ -208,7 +205,10 @@ async function initEventHandlers() {
 
 async function init() {
   // for sake of simplicity we reload all data
-  socket.on("message", () => {
+  socket.on("delete", () => {
+    renderNotes();
+  });
+  socket.on("modify", () => {
     renderNotes();
   });
   await initEventHandlers();

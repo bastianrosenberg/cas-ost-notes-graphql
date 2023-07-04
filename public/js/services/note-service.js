@@ -58,6 +58,7 @@ class NoteService {
               }`,
     };
 
+    socket.emit("modify");
     return this.httpHelper.ajax(query);
   };
 
@@ -77,6 +78,7 @@ class NoteService {
                 }`,
     };
 
+    socket.emit("modify", note._id);
     return this.httpHelper.ajax(query);
   };
 
@@ -90,6 +92,7 @@ class NoteService {
             }`,
     };
 
+    socket.emit("delete", id);
     return this.httpHelper.ajax(query);
   };
 }
